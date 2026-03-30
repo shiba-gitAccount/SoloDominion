@@ -907,6 +907,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 22c183f8c7a105f48b27699e22906c96, type: 2}
   - {fileID: 11400000, guid: a4962523a53c5e34c93b29fec9bb4a45, type: 2}
   - {fileID: 11400000, guid: 717453c4216ff134b895398c39f5b93f, type: 2}
+  - {fileID: 11400000, guid: 8e517b04ba8edb54d8525bcd592aa244, type: 2}
   - {fileID: 11400000, guid: 1c5fdffeda5ccda4b96ff8a46c23a97b, type: 2}
   - {fileID: 11400000, guid: 05737f45af738b3429b3a95e459097ac, type: 2}
   defaultCount: 10
@@ -2172,7 +2173,7 @@ MonoBehaviour:
   villageData: {fileID: 11400000, guid: 05737f45af738b3429b3a95e459097ac, type: 2}
   smithyData: {fileID: 11400000, guid: 1c5fdffeda5ccda4b96ff8a46c23a97b, type: 2}
   silverData: {fileID: 11400000, guid: be7a9c2e31acf8f4d9d08c0d22444358, type: 2}
-  newCardData: {fileID: 11400000, guid: 717453c4216ff134b895398c39f5b93f, type: 2}
+  newCardData: {fileID: 11400000, guid: 8e517b04ba8edb54d8525bcd592aa244, type: 2}
   deck: []
   hand: []
   choices: []
@@ -2333,6 +2334,7 @@ GameObject:
   - component: {fileID: 936676086}
   - component: {fileID: 936676088}
   - component: {fileID: 936676087}
+  - component: {fileID: 936676089}
   m_Layer: 5
   m_Name: PlayArea
   m_TagString: Untagged
@@ -2357,7 +2359,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 371}
-  m_SizeDelta: {x: 1000, y: 300}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &936676086
 MonoBehaviour:
@@ -2377,13 +2379,13 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_Spacing: -50
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &936676087
 MonoBehaviour:
@@ -2423,6 +2425,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936676084}
   m_CullTransparentMesh: 1
+--- !u!114 &936676089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936676084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 1
+  m_VerticalFit: 2
 --- !u!1 &1002999298
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,6 +3333,8 @@ GameObject:
   - component: {fileID: 1353903783}
   - component: {fileID: 1353903785}
   - component: {fileID: 1353903784}
+  - component: {fileID: 1353903787}
+  - component: {fileID: 1353903786}
   m_Layer: 5
   m_Name: DiscarArea
   m_TagString: Untagged
@@ -3341,7 +3359,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -187.2, y: -275.4}
-  m_SizeDelta: {x: 375, y: 535}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1353903784
 MonoBehaviour:
@@ -3381,6 +3399,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353903782}
   m_CullTransparentMesh: 1
+--- !u!114 &1353903786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353903782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: -250
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
+--- !u!114 &1353903787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353903782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 2
+  m_VerticalFit: 1
 --- !u!1 &1453914179
 GameObject:
   m_ObjectHideFlags: 0

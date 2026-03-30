@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject cardPrefab;
     public GameObject cardBackPrefab;
-    private GameObject currentDeckVisual;
+    public GameObject currentDeckVisual;
     public Transform canvas;
     public Transform handParent;
     public Transform deckPosition;
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     {
         deck = new List<CardData> {
             copperData, copperData, copperData, copperData, copperData, copperData, copperData, estateData, estateData, estateData, 
-            newCardData,silverData,silverData,
+            newCardData,
         };
             
         deck = GetShuffledDeck(deck);
@@ -271,12 +271,13 @@ public class GameManager : MonoBehaviour
 
     public void FinishSelection()
     {
-        onSelectionComplete?.Invoke(selectedCards);
+        
         Transform targetArea = locationMap[selectLocation].Transform;
         for (int i = choicesArea.childCount - 1; i >= 0; i--)
         {
             choicesArea.GetChild(i).SetParent(targetArea, false);
         }
+        onSelectionComplete?.Invoke(selectedCards);
         currentPhase = GamePhase.Action;
         locationMap[selectLocation].DataList.AddRange(choices);
         choices.Clear();

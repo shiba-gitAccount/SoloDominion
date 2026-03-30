@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "CardEffectLibrary", menuName = "Dominion/Effect")]
 public class CardEffectLibrary : ScriptableObject
@@ -28,17 +29,24 @@ public class CardEffectLibrary : ScriptableObject
     {
         gm.actions += 1;
         gm.StartSelection(99, CardLocation.Hand, null, (list) => {
-            int count = list.Count;
-            foreach (var card in list)
-            {
-                gm.discardPile.Add(card.data);
-                card.location = CardLocation.Discard;
-                card.transform.SetParent(gm.discardPosition, true);
-                card.GetComponent<CardMovement>().MoveTo(gm.discardPosition, 0.3f, false);
-            }
-            gm.StartCoroutine(gm.DrawCards(count));
-            Debug.Log($"{count}枚捨てて、{count}枚引きました。");
+            gm.StartCoroutine(CellarSequence(gm, list));
         });
+    }
+
+    private IEnumerator CellarSequence(GameManager gm, List<CardView> selectedList)
+    {
+        int count = selectedList.Count;
+
+        foreach (var card in selectedList)
+        {
+            gm.discardPile.Add(card.data);
+            gm.hand.Remove(card.data);
+            card.location = CardLocation.Discard;
+            card.transform.SetParent(gm.canvas, true);
+            card.GetComponent<CardMovement>().MoveTo(gm.discardPosition, 0.3f, false);
+        }
+        yield return new WaitForSeconds(0.35f);
+        yield return gm.StartCoroutine(gm.DrawCards(count));
     }
 
     public static void Moat(GameManager gm)
@@ -92,6 +100,34 @@ public class CardEffectLibrary : ScriptableObject
         gm.actions += 1;
         gm.merchant += 1;
         gm.StartCoroutine(gm.DrawCards(1));
+    }
+
+    public static void Harbinger(GameManager gm)
+    {
+        gm.actions += 1;
+        // 直接呼ぶのではなく、専用のシーケンスを開始する
+        gm.StartCoroutine(HarbingerSequence(gm));
+    }
+
+    private static IEnumerator HarbingerSequence(GameManager gm)
+    {
+        yield return gm.StartCoroutine(gm.DrawCards(1));
+
+        gm.StartSelection(1, CardLocation.Discard, null, (selectedList) => 
+        {
+            foreach (var cardView in selectedList)
+            {
+                GameObject tempCardBack = Instantiate(gm.cardBackPrefab, cardView.transform);
+                tempCardBack.transform.SetParent(gm.canvas, true);
+                Destroy(cardView.gameObject);
+                tempCardBack.GetComponent<CardMovement>().MoveTo(gm.deckPosition, 0.3f, gm.deck.Count != 0);
+                gm.deck.Add(cardView.data);
+                if (gm.deck.Count == 1)
+                {
+                    gm.currentDeckVisual = tempCardBack;
+                }
+            }
+        });
     }
 
     public static void Village(GameManager gm)
