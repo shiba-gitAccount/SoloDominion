@@ -908,8 +908,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a4962523a53c5e34c93b29fec9bb4a45, type: 2}
   - {fileID: 11400000, guid: 717453c4216ff134b895398c39f5b93f, type: 2}
   - {fileID: 11400000, guid: 8e517b04ba8edb54d8525bcd592aa244, type: 2}
-  - {fileID: 11400000, guid: 1c5fdffeda5ccda4b96ff8a46c23a97b, type: 2}
   - {fileID: 11400000, guid: 05737f45af738b3429b3a95e459097ac, type: 2}
+  - {fileID: 11400000, guid: 1f6c184aeb54db04fbc318985e16dbcf, type: 2}
+  - {fileID: 11400000, guid: 1c5fdffeda5ccda4b96ff8a46c23a97b, type: 2}
+  - {fileID: 11400000, guid: 1e76fbc0c140c41498abe313302c0e6b, type: 2}
+  - {fileID: 11400000, guid: 83aa1f41875d3dd46b2a3790892122db, type: 2}
   defaultCount: 10
 --- !u!224 &324029194
 RectTransform:
@@ -2147,6 +2150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   cardPrefab: {fileID: 4035702626696751890, guid: 619014e073b893240b43fcdd649e1d03, type: 3}
   cardBackPrefab: {fileID: 5146677411169437324, guid: 443081dc58369904aadfa5d26a489123, type: 3}
+  currentDeckVisual: {fileID: 0}
   canvas: {fileID: 734191375}
   handParent: {fileID: 88277140}
   deckPosition: {fileID: 2033872295}
@@ -2163,17 +2167,19 @@ MonoBehaviour:
   victory: 0
   silver: 0
   merchant: 0
+  isVassalEffectProcessing: 0
   currentPhase: 0
   selectLocation: 0
   selectionLimit: 0
+  selectionMin: 0
   gainCostLimit: 0
   gainDestination: 0
   copperData: {fileID: 11400000, guid: 237a92afda81a8f4db182b22ba2a8e38, type: 2}
   estateData: {fileID: 11400000, guid: 4930ba5d3db88824fa6f68bb15c56621, type: 2}
   villageData: {fileID: 11400000, guid: 05737f45af738b3429b3a95e459097ac, type: 2}
   smithyData: {fileID: 11400000, guid: 1c5fdffeda5ccda4b96ff8a46c23a97b, type: 2}
-  silverData: {fileID: 11400000, guid: be7a9c2e31acf8f4d9d08c0d22444358, type: 2}
-  newCardData: {fileID: 11400000, guid: 8e517b04ba8edb54d8525bcd592aa244, type: 2}
+  silverData: {fileID: 11400000, guid: 22c183f8c7a105f48b27699e22906c96, type: 2}
+  newCardData: {fileID: 11400000, guid: 83aa1f41875d3dd46b2a3790892122db, type: 2}
   deck: []
   hand: []
   choices: []

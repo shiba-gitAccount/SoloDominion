@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public enum CardType
 {
@@ -15,6 +16,5 @@ public abstract class CardData : ScriptableObject
     public CardType cardtype;
     public Sprite cardImage;
     public int cost;
-    public bool isPlayable;
-    public abstract void ExecuteEffect(GameManager gm);
+    public abstract IEnumerator ExecuteEffect(GameManager gm);
 }

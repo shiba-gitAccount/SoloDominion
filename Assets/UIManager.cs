@@ -22,7 +22,6 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        closeButton.onClick.AddListener(HideCardDetail);
         cardZoomPanel.SetActive(false);
         selectionPanel.SetActive(false);
     }
@@ -36,6 +35,8 @@ public class UIManager : MonoBehaviour
         selectButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
         gainButton.gameObject.SetActive(false);
+        closeButton.onClick.RemoveAllListeners();
+        closeButton.onClick.AddListener(HideCardDetail);
 
         switch (context)
         {
@@ -77,12 +78,20 @@ public class UIManager : MonoBehaviour
                 });
                 break;
             case CardContext.Vassal:
-                playButton.gameObject.SetActive(true);
-                playButton.onClick.RemoveAllListeners();
-                playButton.onClick.AddListener(() => {
-                    GameManager.Instance.PlayCardFromVassal(originalCard);
-                    HideCardDetail();
+                closeButton.onClick.RemoveAllListeners(); 
+                closeButton.onClick.AddListener(() => {
+                    GameManager.Instance.BackFromVassal(originalCard); 
+                    HideCardDetail();                                 
                 });
+                if (originalCard.data.cardtype == CardType.Action)
+                {
+                    playButton.gameObject.SetActive(true);
+                    playButton.onClick.RemoveAllListeners();
+                    playButton.onClick.AddListener(() => {
+                        GameManager.Instance.PlayCardFromVassal(originalCard);
+                        HideCardDetail();
+                    });
+                }
                 break;
             case CardContext.Gain:
                 gainButton.gameObject.SetActive(true);
@@ -113,16 +122,23 @@ public class UIManager : MonoBehaviour
         cardZoomPanel.SetActive(false);
     }
 
-    public void ShowSelectPanel()
+    public void ShowSelectPanel(bool show)
     {
         selectionPanel.SetActive(true);
-        completeButton.gameObject.SetActive(true);
-        completeButton.onClick.RemoveAllListeners();
-        completeButton.onClick.AddListener(() =>
+        if (show)
         {
-            GameManager.Instance.FinishSelection();
-            HideSelectPanel();
-        });
+            completeButton.gameObject.SetActive(true);
+            completeButton.onClick.RemoveAllListeners();
+            completeButton.onClick.AddListener(() =>
+            {
+                GameManager.Instance.FinishSelection();
+                HideSelectPanel();
+            });
+        }
+        else
+        {
+            completeButton.gameObject.SetActive(false);
+        }
     }
 
     public void HideSelectPanel()

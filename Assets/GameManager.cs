@@ -49,10 +49,13 @@ public class GameManager : MonoBehaviour
     public int victory = 0;
     public bool silver = false;
     public int merchant = 0;
+    
+    public bool isVassalEffectProcessing = false;
 
     public GamePhase currentPhase;
     public CardLocation selectLocation;
     public int selectionLimit;
+    public int selectionMin;
     public int gainCostLimit;
     public CardLocation gainDestination;
 
@@ -95,11 +98,11 @@ public class GameManager : MonoBehaviour
     void SetupInitialDeck()
     {
         deck = new List<CardData> {
-            copperData, copperData, copperData, copperData, copperData, copperData, copperData, estateData, estateData, estateData, 
-            newCardData,
+            copperData, copperData, copperData, copperData, copperData, //copperData, copperData, estateData, estateData, estateData, 
+            newCardData, silverData
         };
             
-        deck = GetShuffledDeck(deck);
+        // deck = GetShuffledDeck(deck);
         currentDeckVisual = Instantiate(cardBackPrefab, deckPosition);
     }
 
@@ -206,16 +209,26 @@ public class GameManager : MonoBehaviour
         hand.Remove(cardView.data);
         cardView.transform.SetParent(canvas, true);
         cardView.GetComponent<CardMovement>().MoveTo(playArea, 0.3f, false);
-        cardView.data.ExecuteEffect(this);
+        StartCoroutine(cardView.data.ExecuteEffect(this));
     }
 
     public void PlayCardFromVassal(CardView cardView)
+    {
+        StartCoroutine(VassalPlaySequence(cardView));
+    }
+    private IEnumerator VassalPlaySequence(CardView cardView)
     {
         cardView.location = CardLocation.PlayArea;
         discardPile.Remove(cardView.data);
         cardView.transform.SetParent(canvas, true);
         cardView.GetComponent<CardMovement>().MoveTo(playArea, 0.3f, false);
-        cardView.data.ExecuteEffect(this);
+        yield return StartCoroutine(cardView.data.ExecuteEffect(this));
+        isVassalEffectProcessing = false;
+    }
+    public void BackFromVassal(CardView cardView)
+    {
+        discardPile.Add(cardView.data);
+        isVassalEffectProcessing = false;
     }
 
     public void ToggleCardSelection(CardView card)
@@ -229,6 +242,10 @@ public class GameManager : MonoBehaviour
         selectedCards.Add(card);
         card.location = CardLocation.Select;
         card.transform.SetParent(selectedArea, false);
+        if (selectedCards.Count >= selectionMin)
+        {
+           UIManager.Instance.ShowSelectPanel(true);
+        }
         Debug.Log($"{card.data.cardName} を確定エリアへ移動しました。");
     }
 
@@ -238,15 +255,20 @@ public class GameManager : MonoBehaviour
         choices.Add(card.data);
         card.transform.SetParent(choicesArea, false);
         card.location = selectLocation;
+        if (selectedCards.Count < selectionMin)
+        {
+            UIManager.Instance.ShowSelectPanel(false);
+        }
         Debug.Log($"{card.data.cardName} を選択候補に戻しました。");
     }
 
-    public void StartSelection(int maxCount, CardLocation location, System.Predicate<CardData> condition, System.Action<List<CardView>> callback)
+    public void StartSelection(int minCount, int maxCount, CardLocation location, System.Predicate<CardData> condition, System.Action<List<CardView>> callback)
     {
         currentPhase = GamePhase.isSelecting;
         selectLocation = location;
         onSelectionComplete = callback;
         selectionLimit = maxCount;
+        selectionMin = minCount;
         var allCardsInLocation = locationMap[selectLocation].DataList;
         for (int i = allCardsInLocation.Count - 1; i >= 0; i--)
         {
@@ -266,19 +288,18 @@ public class GameManager : MonoBehaviour
                 child.transform.SetParent(choicesArea, false);
             }
         }
-        UIManager.Instance.ShowSelectPanel();
+        UIManager.Instance.ShowSelectPanel(selectionMin == 0);
     }
 
     public void FinishSelection()
     {
-        
+        currentPhase = GamePhase.Action;
         Transform targetArea = locationMap[selectLocation].Transform;
         for (int i = choicesArea.childCount - 1; i >= 0; i--)
         {
             choicesArea.GetChild(i).SetParent(targetArea, false);
         }
         onSelectionComplete?.Invoke(selectedCards);
-        currentPhase = GamePhase.Action;
         locationMap[selectLocation].DataList.AddRange(choices);
         choices.Clear();
         selectedCards.Clear();
