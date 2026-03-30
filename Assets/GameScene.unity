@@ -906,6 +906,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 076b4085983c02e48a95b50cad665bd3, type: 2}
   - {fileID: 11400000, guid: 22c183f8c7a105f48b27699e22906c96, type: 2}
   - {fileID: 11400000, guid: a4962523a53c5e34c93b29fec9bb4a45, type: 2}
+  - {fileID: 11400000, guid: 717453c4216ff134b895398c39f5b93f, type: 2}
   - {fileID: 11400000, guid: 1c5fdffeda5ccda4b96ff8a46c23a97b, type: 2}
   - {fileID: 11400000, guid: 05737f45af738b3429b3a95e459097ac, type: 2}
   defaultCount: 10
@@ -2170,7 +2171,8 @@ MonoBehaviour:
   estateData: {fileID: 11400000, guid: 4930ba5d3db88824fa6f68bb15c56621, type: 2}
   villageData: {fileID: 11400000, guid: 05737f45af738b3429b3a95e459097ac, type: 2}
   smithyData: {fileID: 11400000, guid: 1c5fdffeda5ccda4b96ff8a46c23a97b, type: 2}
-  newCardData: {fileID: 11400000, guid: a4962523a53c5e34c93b29fec9bb4a45, type: 2}
+  silverData: {fileID: 11400000, guid: be7a9c2e31acf8f4d9d08c0d22444358, type: 2}
+  newCardData: {fileID: 11400000, guid: 717453c4216ff134b895398c39f5b93f, type: 2}
   deck: []
   hand: []
   choices: []

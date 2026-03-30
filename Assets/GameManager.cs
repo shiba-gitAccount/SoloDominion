@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     public CardData estateData;
     public CardData villageData;
     public CardData smithyData;
+    public CardData silverData;
     public CardData newCardData;
 
     public List<CardData> deck = new List<CardData>();
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
     {
         deck = new List<CardData> {
             copperData, copperData, copperData, copperData, copperData, copperData, copperData, estateData, estateData, estateData, 
-            newCardData,
+            newCardData,silverData,silverData,
         };
             
         deck = GetShuffledDeck(deck);

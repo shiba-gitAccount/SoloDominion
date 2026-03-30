@@ -87,6 +87,13 @@ public class CardEffectLibrary : ScriptableObject
         gm.StartGain(4, null, CardLocation.Discard);
     }
 
+    public static void Merchant(GameManager gm)
+    {
+        gm.actions += 1;
+        gm.merchant += 1;
+        gm.StartCoroutine(gm.DrawCards(1));
+    }
+
     public static void Village(GameManager gm)
     {
         gm.actions += 2;
