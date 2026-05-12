@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e90fa5ea5dfd42408a5a254df9c3663, type: 3}
+  m_Name: Data_Laboratory
+  m_EditorClassIdentifier: Assembly-CSharp::CustomCard
+  cardName: Laboratory
+  cardtype: 0
+  cardImage: {fileID: -7870918080361938709, guid: 8f8aad20d89f9f442b2cd6e3e4db4d10, type: 3}
+  supplyImage: {fileID: -7870918080361938709, guid: 7ff332af8fb2d994a921f3fd53337152, type: 3}
+  cost: 5

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e90fa5ea5dfd42408a5a254df9c3663, type: 3}
+  m_Name: Data_Militia
+  m_EditorClassIdentifier: Assembly-CSharp::CustomCard
+  cardName: Militia
+  cardtype: 0
+  cardImage: {fileID: -2644573133280148179, guid: 801a08554f5235c4682bbf7986334213, type: 3}
+  supplyImage: {fileID: -2644573133280148179, guid: d1245e065c47f034aba8fbeaa76aa1dc, type: 3}
+  cost: 4

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8254351793903816097}
   - component: {fileID: 3823095402491917130}
   - component: {fileID: 7304973847137432204}
+  - component: {fileID: 7090260758230386094}
+  - component: {fileID: 2560511937465461800}
   m_Layer: 5
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -137,6 +139,7 @@ MonoBehaviour:
   data: {fileID: 0}
   cardImageDisplay: {fileID: 7825251180326248833}
   location: 0
+  currentContext: 0
 --- !u!114 &7304973847137432204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +152,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c507b926d122a49bec8e95469e4685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackController
+--- !u!114 &7090260758230386094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4035702626696751890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
+--- !u!114 &2560511937465461800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4035702626696751890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1

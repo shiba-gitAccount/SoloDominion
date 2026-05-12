@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e90fa5ea5dfd42408a5a254df9c3663, type: 3}
+  m_Name: Data_Vassal
+  m_EditorClassIdentifier: Assembly-CSharp::CustomCard
+  cardName: Vassal
+  cardtype: 0
+  cardImage: {fileID: -6681941329159457488, guid: d556ea41c8cf5f644af28c292c23ee59, type: 3}
+  supplyImage: {fileID: -6681941329159457488, guid: 7dd98784b9140ee44857dfd18eecb5c8, type: 3}
+  cost: 3

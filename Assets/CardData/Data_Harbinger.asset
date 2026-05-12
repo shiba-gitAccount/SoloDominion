@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e90fa5ea5dfd42408a5a254df9c3663, type: 3}
+  m_Name: Data_Harbinger
+  m_EditorClassIdentifier: Assembly-CSharp::CustomCard
+  cardName: Harbinger
+  cardtype: 0
+  cardImage: {fileID: 5924172039620091632, guid: ade4f24c46fc9114da84a505df0f9f67, type: 3}
+  supplyImage: {fileID: 5924172039620091632, guid: c7d67cc6c061b8a4fa9839afc5da50c5, type: 3}
+  cost: 3
