@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayAreaController : MonoBehaviour
 {
-    private float width = 1000f;
+    private float width = 800f;
     void OnTransformChildrenChanged()
     {
         int childCount = transform.childCount;

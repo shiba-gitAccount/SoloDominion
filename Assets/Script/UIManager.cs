@@ -136,7 +136,7 @@ public class UIManager : MonoBehaviour
             view.enabled = false;
         }
         RectTransform zoomedRT = currentZoomedCard.GetComponent<RectTransform>();
-        zoomedRT.sizeDelta = new Vector2(531f, 819f);
+        zoomedRT.sizeDelta = new Vector2(354f, 546f);
         zoomedRT.anchoredPosition = Vector2.zero;
         zoomedRT.rotation = Quaternion.identity;
     }

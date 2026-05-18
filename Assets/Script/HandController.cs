@@ -3,7 +3,7 @@ using UnityEngine;
 public class HandController : MonoBehaviour
 {
     float pi = 3.14159265359f;
-    private float radius = 2000f;
+    private float radius = 1500f;
 
     void OnTransformChildrenChanged()
     {

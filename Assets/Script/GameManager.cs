@@ -578,7 +578,7 @@ public class GameManager : MonoBehaviour
         SetupInitialDeck();
         totalDeckCount = deck.Count;
         PhaseChange(GamePhase.Cleanup);
-        StartCoroutine(SetupHand());
         ResetCondition();
+        StartCoroutine(SetupHand());
     }
 }
